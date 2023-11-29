@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.security.SecureRandom;
 import javax.swing.*;
 import java.util.Random;
 
@@ -34,7 +35,7 @@ public class GamePanel extends JPanel implements ActionListener {
     Random random;
 
     GamePanel() {
-        random = new Random();
+        random = new SecureRandom();
         this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
         this.setBackground(Color.black);
         this.setFocusable(true);

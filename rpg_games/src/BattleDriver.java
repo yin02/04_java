@@ -1,3 +1,4 @@
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -12,7 +13,7 @@ public class BattleDriver {
         this.player1 = player1;
         this.player2 = player2;
         this.availableItems = new ArrayList<>(availableItems); // Copy of available items
-        this.random = new Random();
+        this.random = new SecureRandom();
     }
 
     // Method to conduct the battle

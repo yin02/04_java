@@ -1,3 +1,4 @@
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -15,7 +16,7 @@ public class RPGGameSimulator {
 
     private static List<Item> generateRandomItems() {
         List<Item> items = new ArrayList<>();
-        Random random = new Random();
+        Random random = new SecureRandom();
 
         for (int i = 0; i < 20; i++) {
             int itemType = random.nextInt(3); // Randomly choose between 0, 1, and 2

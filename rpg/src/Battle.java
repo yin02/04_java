@@ -1,3 +1,4 @@
+import java.security.SecureRandom;
 import java.util.List;
 import java.util.Random;
 
@@ -11,7 +12,7 @@ public class Battle {
         this.character1 = character1;
         this.character2 = character2;
         this.availableItems = availableItems;
-        this.random = new Random();
+        this.random = new SecureRandom();
     }
 
     public void startBattle() throws ItemLimitExceededException {
