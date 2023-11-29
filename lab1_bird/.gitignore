@@ -1,0 +1,72 @@
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class ConservatoryTest {
+    private Conservatory conservatory;
+
+    @BeforeEach
+    public void setUp() {
+        conservatory = new Conservatory();
+    }
+
+    @Test
+    public void testRescueBird() {
+        Bird sparrow = new Bird("Sparrow", "Small bird", 0.5, false, false, false, false);
+        assertTrue(conservatory.rescueBird(sparrow));
+    }
+
+    @Test
+    public void testCalculateFoodNeeds() {
+        Bird sparrow = new Bird("Sparrow", "Small bird", 0.5, false, false, false, false);
+        conservatory.rescueBird(sparrow);
+        assertEquals(0.5, conservatory.calculateFoodNeeds());
+    }
+
+    @Test
+    public void testFindAviaryByBirdType() {
+        Bird sparrow = new Bird("Sparrow", "Small bird", 0.5, false, false, false, false);
+        conservatory.rescueBird(sparrow);
+        assertNotNull(conservatory.findAviaryByBirdType("Sparrow"));
+    }
+
+    @Test
+    public void testPrintSignForAviary() {
+        // This test is more about checking if the method runs without errors, 
+        // as it's hard to capture console output in a unit test.
+        Bird sparrow = new Bird("Sparrow", "Small bird", 0.5, false, false, false, false);
+        conservatory.rescueBird(sparrow);
+        Aviary aviary = conservatory.findAviaryByBirdType("Sparrow");
+        conservatory.printSignForAviary(aviary);
+    }
+
+    @Test
+    public void testPrintMap() {
+        // Similar to the above test, this is more about checking if the method runs without errors.
+        Bird sparrow = new Bird("Sparrow", "Small bird", 0.5, false, false, false, false);
+        conservatory.rescueBird(sparrow);
+        conservatory.printMap();
+    }
+
+    @Test
+    public void testPrintIndex() {
+        // Similar to the above tests, this is more about checking if the method runs without errors.
+        Bird sparrow = new Bird("Sparrow", "Small bird", 0.5, false, false, false, false);
+        conservatory.rescueBird(sparrow);
+        conservatory.printIndex();
+    }
+
+    @Test
+    public void testBirdCompatibility() {
+        Bird sparrow = new Bird("Sparrow", "Small bird", 0.5, false, false, false, false);
+        Bird eagle = new Bird("Eagle", "Bird of prey", 2.0, false, true, false, false);
+        conservatory.rescueBird(sparrow);
+        assertFalse(conservatory.rescueBird(eagle)); // Should return false since they are not compatible
+    }
+
+    @Test
+    public void testExtinctBird() {
+        Bird dodo = new Bird("Dodo", "Extinct bird", 1.0, true, false, false, false);
+        assertFalse(conservatory.rescueBird(dodo)); // Should return false since the bird is extinct
+    }
+}
