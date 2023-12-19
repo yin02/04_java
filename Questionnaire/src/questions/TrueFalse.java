@@ -18,7 +18,7 @@ public class TrueFalse implements Question {
     @Override
     public String answer(String answer) {
         // Normalize and check the answer. If it doesn't match "true" or "false" (case insensitive), it's incorrect.
-        if (!answer.equalsIgnoreCase("true") && !answer.equalsIgnoreCase("false")) {
+        if (!"true".equalsIgnoreCase(answer) && !"false".equalsIgnoreCase(answer)) {
             return "Incorrect";
         }
 
